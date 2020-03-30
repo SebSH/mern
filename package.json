@@ -3,5 +3,9 @@
   "workspaces": [
     "frontend",
     "backend"
-  ]
+  ],
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.5.5"
+  }
 }

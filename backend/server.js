@@ -10,6 +10,10 @@ import emoji from 'node-emoji';
 import responseTime from 'response-time';
 import favicon from 'serve-favicon';
 import indexRouter from './routes/index';
+import playerRouter from './routes/player';
+import userRouter from './routes/user';
+import messageRouter from './routes/message';
+import mongoose from 'mongoose';
 
 const app = express();
 
@@ -52,8 +56,13 @@ app.use(
   })
 );
 
+mongoose.connect('mongodb://mongo/ipssi2019', { useUnifiedTopology: true, useNewUrlParser: true });
+
 // routes
 app.use('/', indexRouter);
+app.use('/player', playerRouter);
+app.use('/user', userRouter);
+app.use('/message', messageRouter);
 
 // setup ip address and port number
 app.set('port', process.env.PORT || 3000);
