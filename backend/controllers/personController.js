@@ -1,12 +1,13 @@
 import Person from '../models/personModel';
 import moment from 'moment';
 import jwt from 'jwt-simple';
+import bcrypt from 'bcryptjs';
 
-export const signUp = (req, res) => {
+export const signUp = async (req, res) => {
   let person = new Person(req.body);
   var createdPerson = await person.save();
 
-  req.json(createdPerson);
+  res.json(createdPerson);
 };
 
 export const login = async (req, res) => {
@@ -24,7 +25,7 @@ export const login = async (req, res) => {
         iss: person.id
       };
 
-    let token = jwt.encode(paykoad, process.env.TOKEN_SECRET);
+    let token = jwt.encode(payload, process.env.TOKEN_SECRET);
     res.json({
       firstName: person.firstName,
       lastName: person.lastname,

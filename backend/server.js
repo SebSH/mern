@@ -13,6 +13,7 @@ import indexRouter from './routes/index';
 import playerRouter from './routes/player';
 import userRouter from './routes/user';
 import messageRouter from './routes/message';
+import personRouter from './routes/person';
 import mongoose from 'mongoose';
 
 const app = express();
@@ -70,6 +71,7 @@ app.use('/', indexRouter);
 app.use('/player', playerRouter);
 app.use('/user', userRouter);
 app.use('/message', messageRouter);
+app.use('/person', personRouter);
 
 // setup ip address and port number
 app.set('port', process.env.PORT || 3000);
