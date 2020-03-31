@@ -56,7 +56,14 @@ app.use(
   })
 );
 
-mongoose.connect('mongodb://mongo/ipssi2019', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect('mongodb://titi:test@localhost:27017/ipssi2019', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}
+)
+  .then(() => {
+    console.log(emoji.get('heavy_check_mark'), 'MongoDB connection success');
+  });
 
 // routes
 app.use('/', indexRouter);

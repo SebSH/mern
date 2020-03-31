@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import userSchema from '../models/user';
+import userSchema from '../models/userModel';
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 export const add = (req, res) => {
   let newUser = new User(req.body);
@@ -14,14 +14,9 @@ export const add = (req, res) => {
   });
 };
 
-export const getAll = (req, res) => {
-  User.find({}, (err, users) => {
-    if (err) {
-      res.send('an error occured while trying to get users');
-    }
-
-    res.send(users);
-  });
+export const getAll = async (req, res) => {
+  const users = await User.find().populate('messages');
+  res.json(users);
 };
 
 exports.get_user = function (req, res) {

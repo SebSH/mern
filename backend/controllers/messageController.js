@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import messageSchema from '../models/messageModel';
-import userSchema from '../models/playerModel';
+import userSchema from '../models/userModel';
 
 const Message = mongoose.model('Message', messageSchema);
 const User = mongoose.model('User', userSchema);
